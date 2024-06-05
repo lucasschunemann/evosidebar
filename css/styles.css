@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap");
+
+/* Estilos globais */
+body {
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  background-color: #f4f4f9;
+}
+
+/* Sidebar */
+.sidebar {
+  font-family: "Barlow", sans-serif;
+  width: 280px;
+  background: #4a3f63;
+  color: white;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  left: -280px;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: left 0.3s ease; /* Adiciona animação para a transição da posição */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #8e7cc3;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #7a67b1;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #3a3252;
+  border-radius: 10px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #5b4a7b;
+}
+
+.sidebar-header img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.sidebar-header h1 {
+  font-size: 22px;
+  margin: 0;
+  color: #ecf0f1;
+}
+
+/* Menu */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background-color: #5b4a7b;
+}
+
+.menu-text {
+  font-weight: 500;
+}
+
+.submenu {
+  padding-left: 20px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.submenu.show {
+  max-height: 500px;
+}
+
+.submenu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submenu-item:hover {
+  background-color: #675a92;
+}
+
+.menu-item .icon {
+  margin-right: 10px;
+}
+
+/* Botão toggle */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  cursor: pointer;
+  background-color: #4a3f63;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease; /* Adiciona animação para a transição da posição */
+}
+
+.menu-toggle-icon {
+  font-size: 24px;
+}
+
+/* Conteúdo */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 280px;
+}
+
+.content-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -280px;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .menu-toggle {
+    left: 20px;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}
