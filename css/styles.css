@@ -46,6 +46,7 @@ body {
   align-items: center;
   padding: 20px;
   background-color: #5b4a7b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-header img {
@@ -70,7 +71,9 @@ body {
   padding: 15px 25px; /* Aumentar o espaçamento */
   cursor: pointer;
   position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divisores entre os itens */
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px; /* Adiciona bordas arredondadas */
 }
 
 .menu-item:hover,
@@ -83,7 +86,13 @@ body {
   font-weight: 400;
 }
 
+.icon {
+  margin-right: 15px;
+  font-size: 18px;
+}
+
 .submenu {
+  list-style: none;
   padding-left: 20px;
   overflow: hidden;
   max-height: 0;
@@ -91,13 +100,15 @@ body {
 }
 
 .submenu.show {
-  max-height: 500px;
+  max-height: 1000px;
 }
 
 .submenu-item {
-  padding: 10px 20px;
+  padding: 10px 25px;
   cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divisores entre os itens do submenu */
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px; /* Adiciona bordas arredondadas */
 }
 
 .submenu-item:hover {
