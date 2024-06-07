@@ -6,13 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   menuToggle.addEventListener("click", () => {
     sidebar.classList.toggle("hidden");
-    if (sidebar.classList.contains("hidden")) {
-      sidebar.style.left = "-280px";
-      menuToggle.style.left = "20px";
-    } else {
-      sidebar.style.left = "0";
-      menuToggle.style.left = "300px";
-    }
+    sidebar.style.left = sidebar.classList.contains("hidden") ? "-280px" : "0";
+    menuToggle.style.left = sidebar.classList.contains("hidden")
+      ? "20px"
+      : "300px";
   });
 
   function toggleSubmenu(submenuId) {
@@ -24,16 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuItem = document.createElement("li");
     menuItem.classList.add("menu-item");
 
-    const icon = document.createElement("i");
-    if (item.icon) {
-      icon.className = item.icon + " icon";
+    if (item.children && item.children.length > 0) {
+      const icon = document.createElement("i");
+      icon.className = "fas fa-folder icon"; // Ícone de pastinha
+      menuItem.appendChild(icon);
     }
 
     const text = document.createElement("span");
     text.className = "menu-text";
     text.textContent = item.text;
-
-    menuItem.appendChild(icon);
     menuItem.appendChild(text);
 
     if (item.children && item.children.length > 0) {
@@ -43,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       item.children.forEach((subitem) => {
         const submenuItem = createMenuItem(subitem);
+        submenuItem.classList.add("submenu-item");
         submenu.appendChild(submenuItem);
       });
 
@@ -67,8 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("data/menus.json")
       .then((response) => response.json())
       .then((data) => {
-        menuContainer.style.opacity = "1";
-
         data.Nos.forEach((item) => {
           const menuItem = createMenuItem(item);
           menu.appendChild(menuItem);

@@ -10,7 +10,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="dark-theme">
     <div class="menu-container">
       <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -71,21 +71,33 @@
                 Recente 2
               </li>
             </ul>
-          </ul>
         </div>
         <div class="menu-section">
           <ul class="menu" id="menu"></ul>
         </div>
       </div>
     </div>
-    <button class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars menu-toggle-icon"></i>
-    </button>
+    <div class="toggle-buttons">
+      <button class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars menu-toggle-icon"></i>
+      </button>
+      <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-adjust"></i>
+      </button>
+    </div>
     <div class="content" id="content">
       <div class="content-inner">
         <!-- Seu conteúdo principal aqui -->
       </div>
     </div>
     <script src="js/scripts.js"></script>
+    <script>
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", function () {
+          document.body.classList.toggle("light-theme");
+          document.body.classList.toggle("dark-theme");
+        });
+    </script>
   </body>
 </html>
