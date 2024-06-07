@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
 
 /* Estilos globais */
 body {
   margin: 0;
   font-family: "Barlow", sans-serif;
   background-color: #f4f4f9;
+  overflow-x: hidden; /* Impede o scroll horizontal */
 }
 
 /* Sidebar */
@@ -68,12 +69,11 @@ body {
 }
 
 .menu-item {
-  padding: 15px 25px; /* Aumentar o espaçamento */
+  padding: 10px 20px;
   cursor: pointer;
   position: relative;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divisores entre os itens */
   transition: background-color 0.3s, color 0.3s;
-  border-radius: 10px; /* Adiciona bordas arredondadas */
+  font-size: 14px;
 }
 
 .menu-item:hover,
@@ -81,38 +81,97 @@ body {
   background-color: #5b4a7b;
 }
 
+.menu-item.active-submenu > .menu-text {
+  background-color: #675a92; /* Cor de fundo quando o submenu está aberto */
+}
+
 .menu-text {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
+  white-space: normal; /* Permite que o texto quebre em várias linhas */
+  overflow: visible; /* Remove o overflow escondido */
+  text-overflow: clip; /* Remove as reticências ao final do texto */
 }
 
 .icon {
-  margin-right: 15px;
-  font-size: 18px;
+  margin-right: 10px;
+  font-size: 16px;
 }
 
+/* Estilização minimalista para itens fixos */
+.fixed-menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 14px;
+  background-color: #4a3f63;
+  border-left: 4px solid transparent;
+}
+
+.fixed-menu-item:hover,
+.fixed-menu-item.active {
+  background-color: #5b4a7b;
+  border-left: 4px solid #8e7cc3;
+}
+
+.fixed-menu-item .icon {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.fixed-menu-item .menu-text {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: normal; /* Permite que o texto quebre em várias linhas */
+  overflow: visible; /* Remove o overflow escondido */
+  text-overflow: clip; /* Remove as reticências ao final do texto */
+}
+
+/* Submenu e linhas verticais */
 .submenu {
   list-style: none;
   padding-left: 20px;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.7s ease-out;
+  transition: max-height 0.7s ease-out, padding-left 0.3s ease;
+  border-left: 2px solid transparent;
 }
 
 .submenu.show {
   max-height: 1000px;
+  border-left: 2px solid #8e7cc3; /* Linha vertical indicando submenu aberto */
+  padding-left: 10px; /* Adiciona um padding para alinhar com a linha vertical */
 }
 
 .submenu-item {
-  padding: 10px 25px;
+  padding: 10px 20px;
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Divisores entre os itens do submenu */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s, color 0.3s;
-  border-radius: 10px; /* Adiciona bordas arredondadas */
+  font-size: 14px;
+  white-space: normal; /* Permite que o texto quebre em várias linhas */
+  overflow: visible; /* Remove o overflow escondido */
+  text-overflow: clip; /* Remove as reticências ao final do texto */
 }
 
 .submenu-item:hover {
   background-color: #675a92;
+}
+
+/* Espaçamento e divisória entre itens fixos e itens do JSON */
+.menu-section {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.menu-section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: 20px;
 }
 
 /* Botão toggle */
@@ -128,7 +187,7 @@ body {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  transition: left 0.3s ease; /* Adiciona animação para a transição da posição */
+  transition: left 0.3s ease;
 }
 
 .menu-toggle-icon {

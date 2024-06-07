@@ -14,10 +14,68 @@
     <div class="menu-container">
       <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-          <img src="scr\images\logomin.png" alt="Logo" />
+          <img src="scr/images/logomin.png" alt="Logo" />
           <h1>Evolutize | ERP</h1>
         </div>
-        <ul class="menu" id="menu"></ul>
+        <div class="menu-section">
+          <ul class="menu">
+            <li
+              class="menu-item fixed-menu-item"
+              onclick="loadContent('home.html')"
+            >
+              <i class="fas fa-home icon"></i>
+              <span class="menu-text">Home</span>
+            </li>
+            <li
+              class="menu-item fixed-menu-item"
+              onclick="toggleSubmenu('dashboards-submenu')"
+            >
+              <i class="fas fa-chart-pie icon"></i>
+              <span class="menu-text">Dashboards</span>
+            </li>
+            <ul class="submenu" id="dashboards-submenu">
+              <li class="submenu-item" onclick="loadContent('dashboard1.html')">
+                Dashboard 1
+              </li>
+              <li class="submenu-item" onclick="loadContent('dashboard2.html')">
+                Dashboard 2
+              </li>
+            </ul>
+            <li
+              class="menu-item fixed-menu-item"
+              onclick="toggleSubmenu('favoritos-submenu')"
+            >
+              <i class="fas fa-star icon"></i>
+              <span class="menu-text">Favoritos</span>
+            </li>
+            <ul class="submenu" id="favoritos-submenu">
+              <li class="submenu-item" onclick="loadContent('favorite1.html')">
+                Favorito 1
+              </li>
+              <li class="submenu-item" onclick="loadContent('favorite2.html')">
+                Favorito 2
+              </li>
+            </ul>
+            <li
+              class="menu-item fixed-menu-item"
+              onclick="toggleSubmenu('recent-submenu')"
+            >
+              <i class="fas fa-clock icon"></i>
+              <span class="menu-text">Telas Recentes</span>
+            </li>
+            <ul class="submenu" id="recent-submenu">
+              <li class="submenu-item" onclick="loadContent('recent1.html')">
+                Recente 1
+              </li>
+              <li class="submenu-item" onclick="loadContent('recent2.html')">
+                Recente 2
+              </li>
+            </ul>
+          </ul>
+        </div>
+        <div class="menu-section">
+          <ul class="menu" id="menu"></ul>
+        </div>
       </div>
     </div>
     <button class="menu-toggle" id="menu-toggle">

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const menuContainer = document.querySelector(".menu-container");
-  const menu = document.querySelector(".menu");
+  const menu = document.querySelector(".menu#menu");
   const menuToggle = document.querySelector(".menu-toggle");
   const sidebar = document.querySelector(".sidebar");
 
@@ -15,13 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  function toggleSubmenu(submenuId) {
+    const submenu = document.getElementById(submenuId);
+    submenu.classList.toggle("show");
+  }
+
   function createMenuItem(item) {
-    const menuItem = document.createElement("div");
+    const menuItem = document.createElement("li");
     menuItem.classList.add("menu-item");
 
     const icon = document.createElement("i");
     if (item.icon) {
-      icon.className = item.icon;
+      icon.className = item.icon + " icon";
     }
 
     const text = document.createElement("span");
@@ -32,8 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
     menuItem.appendChild(text);
 
     if (item.children && item.children.length > 0) {
-      const submenu = document.createElement("div");
+      const submenu = document.createElement("ul");
       submenu.classList.add("submenu");
+      submenu.id = item.id + "-submenu";
 
       item.children.forEach((subitem) => {
         const submenuItem = createMenuItem(subitem);
@@ -43,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       menuItem.appendChild(submenu);
       menuItem.addEventListener("click", function (event) {
         event.stopPropagation();
-        submenu.classList.toggle("show");
+        toggleSubmenu(submenu.id);
       });
     } else {
       menuItem.addEventListener("click", function (event) {
