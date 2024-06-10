@@ -59,6 +59,7 @@
 
 .menu-section {
   margin-top: 20px;
+  padding: 0 10px; /* Adiciona espaçamento horizontal */
 }
 
 .menu-section ul.menu {
@@ -67,4 +68,9 @@
 
 .menu-section ul.menu li {
   list-style: none;
+}
+
+.menu-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px 0;
 }
