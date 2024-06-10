@@ -1,0 +1,62 @@
+/* Sidebar */
+.sidebar {
+  font-family: "Barlow", sans-serif;
+  width: 280px;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  transition: left 0.2s ease; /* Transição mais rápida */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #444;
+  border-radius: 10px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.sidebar-header img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.sidebar-header h1 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Espaçamento e divisória entre itens fixos e itens do JSON */
+.menu-section {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.menu-section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-top: 20px;
+}

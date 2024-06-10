@@ -12,18 +12,21 @@ document.addEventListener("DOMContentLoaded", function () {
       : "300px";
   });
 
-  function toggleSubmenu(submenuId) {
-    const submenu = document.getElementById(submenuId);
-    submenu.classList.toggle("show");
-  }
-
   function createMenuItem(item) {
     const menuItem = document.createElement("li");
     menuItem.classList.add("menu-item");
+    menuItem.addEventListener("click", function (event) {
+      event.stopPropagation();
+      if (item.children && item.children.length > 0) {
+        toggleSubmenu(item.id + "-submenu");
+      } else if (item.data && item.data.TEC_ProgramaCodigo) {
+        loadContent(item.data.TEC_ProgramaCodigo + ".html");
+      }
+    });
 
     if (item.children && item.children.length > 0) {
       const icon = document.createElement("i");
-      icon.className = "fas fa-folder icon"; // Ícone de pastinha
+      icon.className = "fas fa-folder icon";
       menuItem.appendChild(icon);
     }
 
@@ -44,17 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       menuItem.appendChild(submenu);
-      menuItem.addEventListener("click", function (event) {
-        event.stopPropagation();
-        toggleSubmenu(submenu.id);
-      });
-    } else {
-      menuItem.addEventListener("click", function (event) {
-        event.stopPropagation();
-        if (item.data && item.data.TEC_ProgramaCodigo) {
-          loadContent(item.data.TEC_ProgramaCodigo + ".html");
-        }
-      });
     }
 
     return menuItem;
@@ -74,14 +66,19 @@ document.addEventListener("DOMContentLoaded", function () {
       );
   }
 
-  function loadContent(url) {
-    fetch(url)
-      .then((response) => response.text())
-      .then((html) => {
-        document.getElementById("content").innerHTML = html;
-      })
-      .catch((error) => console.error("Erro ao carregar o conteúdo:", error));
-  }
-
   loadMenuData();
 });
+
+function toggleSubmenu(submenuId) {
+  const submenu = document.getElementById(submenuId);
+  submenu.classList.toggle("show");
+}
+
+function loadContent(url) {
+  fetch(url)
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("content").innerHTML = html;
+    })
+    .catch((error) => console.error("Erro ao carregar o conteúdo:", error));
+}
