@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap");
+
+/* Estilos globais */
+body {
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  background-color: #f4f4f9;
+  overflow-x: hidden; /* Impede o scroll horizontal */
+}
+
 .menu {
   list-style: none;
   padding: 0;
@@ -14,11 +24,13 @@
 
 .menu-item:hover,
 .menu-item.active {
-  background-color: #333; /* Cor mais escura no hover e ativo */
+  background-color: var(
+    --menu-hover-active-bg
+  ); /* Cor mais escura no hover e ativo */
 }
 
 .menu-item.active-submenu > .menu-text {
-  background-color: #444;
+  background-color: var(--menu-open-bg);
 }
 
 .menu-text {
@@ -72,7 +84,7 @@
 
 .submenu.show {
   max-height: 1000px;
-  border-left: 2px solid #444;
+  border-left: 2px solid var(--submenu-border);
   padding-left: 10px;
 }
 
@@ -86,21 +98,46 @@
 }
 
 .submenu-item:hover {
-  background-color: #333;
+  background-color: var(--submenu-item-hover-bg);
 }
 
 .menu-item-open {
-  background-color: #444; /* Cor mais escura para o item do menu aberto */
+  background-color: var(
+    --menu-open-bg
+  ); /* Cor mais escura para o item do menu aberto */
 }
 
 .menu-item-open .menu-text {
-  background-color: #444; /* Cor mais escura para o texto do item do menu aberto */
+  background-color: var(
+    --menu-open-bg
+  ); /* Cor mais escura para o texto do item do menu aberto */
 }
 
 .submenu-item-open {
-  background-color: #444; /* Cor mais escura para o item do submenu aberto */
+  background-color: var(
+    --submenu-item-open-bg
+  ); /* Cor mais escura para o item do submenu aberto */
 }
 
 .submenu-item-open:hover {
-  background-color: #444; /* Cor de fundo para o item do submenu aberto ao passar o mouse */
+  background-color: var(
+    --submenu-item-open-bg
+  ); /* Cor de fundo para o item do submenu aberto ao passar o mouse */
+}
+
+/* Temas */
+.light-theme {
+  --menu-hover-active-bg: #f9f9f9;
+  --menu-open-bg: #f9f9f9;
+  --submenu-border: #ddd;
+  --submenu-item-hover-bg: #f9f9f9;
+  --submenu-item-open-bg: #f9f9f9;
+}
+
+.dark-theme {
+  --menu-hover-active-bg: #333;
+  --menu-open-bg: #444;
+  --submenu-border: #444;
+  --submenu-item-hover-bg: #333;
+  --submenu-item-open-bg: #444;
 }
