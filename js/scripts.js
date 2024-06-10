@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     menuItem.addEventListener("click", function (event) {
       event.stopPropagation();
       if (item.children && item.children.length > 0) {
-        closeOtherSubmenus(item.id + "-submenu");
         toggleSubmenu(item.id + "-submenu");
       } else if (item.data && item.data.TEC_ProgramaCodigo) {
         loadContent(item.data.TEC_ProgramaCodigo + ".html");
@@ -69,15 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadMenuData();
 });
-
-function closeOtherSubmenus(exceptId) {
-  const allSubmenus = document.querySelectorAll(".submenu");
-  allSubmenus.forEach((submenu) => {
-    if (submenu.id !== exceptId && submenu.classList.contains("show")) {
-      submenu.classList.remove("show");
-    }
-  });
-}
 
 function toggleSubmenu(submenuId) {
   const submenu = document.getElementById(submenuId);
