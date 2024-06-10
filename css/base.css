@@ -183,6 +183,9 @@ body {
 @media (max-width: 768px) {
   .sidebar {
     left: -280px;
+    position: fixed;
+    height: 100%;
+    transition: left 0.3s ease;
   }
 
   .sidebar.show {
@@ -191,9 +194,16 @@ body {
 
   .menu-toggle {
     left: 20px;
+    position: fixed;
+    z-index: 1001;
   }
 
   .content {
     margin-left: 0;
+  }
+
+  .toggle-buttons {
+    top: 20px;
+    right: 20px;
   }
 }
