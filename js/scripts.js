@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createMenuItem(item) {
     const menuItem = document.createElement("li");
     menuItem.classList.add("menu-item");
+
     menuItem.addEventListener("click", function (event) {
       event.stopPropagation();
       if (item.children && item.children.length > 0) {
@@ -34,6 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
     text.className = "menu-text";
     text.textContent = item.text;
     menuItem.appendChild(text);
+
+    if (!item.children || item.children.length === 0) {
+      const favoriteButton = document.createElement("button");
+      favoriteButton.classList.add("favorite-button");
+      favoriteButton.innerHTML = '<i class="fas fa-star"></i>';
+      favoriteButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleFavorite(item);
+      });
+      menuItem.appendChild(favoriteButton);
+    }
 
     if (item.children && item.children.length > 0) {
       const submenu = document.createElement("ul");
@@ -86,4 +98,10 @@ function loadContent(url) {
       document.getElementById("content").innerHTML = html;
     })
     .catch((error) => console.error("Erro ao carregar o conteúdo:", error));
+}
+
+//Adicionar aos favoritos
+function toggleFavorite(item) {
+  // Log para retorno
+  console.log("Favorito toggled para:", item.text);
 }

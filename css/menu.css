@@ -141,3 +141,25 @@ body {
   --submenu-item-hover-bg: #333;
   --submenu-item-open-bg: #444;
 }
+
+.favorite-button {
+  background: none;
+  border: none;
+  color: gold;
+  cursor: pointer;
+  position: absolute;
+  right: 10px; /* Adicione esta linha */
+  top: 50%; /* Adicione esta linha */
+  transform: translateY(-50%); /* Adicione esta linha */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.favorite-button i {
+  font-size: 12px;
+}
+
+.favorite-button:hover {
+  color: darkorange;
+}
