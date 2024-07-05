@@ -127,11 +127,11 @@ body {
 
 /* Temas */
 .light-theme {
-  --menu-hover-active-bg: #f9f9f9;
-  --menu-open-bg: #f9f9f9;
-  --submenu-border: #ddd;
-  --submenu-item-hover-bg: #f9f9f9;
-  --submenu-item-open-bg: #f9f9f9;
+  --menu-hover-active-bg: #e0e0e0;
+  --menu-open-bg: #e0e0e0;
+  --submenu-border: #dcdcdc;
+  --submenu-item-hover-bg: #e0e0e0;
+  --submenu-item-open-bg: #e0e0e0;
 }
 
 .dark-theme {
