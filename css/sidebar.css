@@ -1,3 +1,5 @@
+/* sidebar.css */
+
 /* Sidebar */
 .sidebar {
   font-family: "Barlow", sans-serif;
@@ -5,12 +7,16 @@
   height: 100vh;
   overflow-y: auto;
   position: fixed;
-  left: 0;
+  left: -280px; /* Ajustado para garantir que comece fora da tela */
   top: 0;
   z-index: 1000;
   background-color: #333;
   transition: left 0.2s ease;
   padding-bottom: 20px;
+}
+
+.sidebar.show {
+  left: 0;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -33,10 +39,19 @@
 
 .sidebar-header {
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
+  justify-content: space-between; /* Alinha o botão de fechar à direita */
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-btn {
+  display: none; /* Esconde o botão de fechar por padrão */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .logo-container {
@@ -73,4 +88,28 @@
 .menu-divider {
   border-top: 1px solid #6d57a5;
   margin: 20px 0;
+}
+
+/* Estilos responsivos para telas menores */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    left: -100%; /* Ajustado para começar fora da tela no celular */
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+  }
+
+  .close-btn {
+    display: block; /* Mostra o botão de fechar no celular */
+  }
+
+  .content {
+    margin-left: 0;
+    padding-top: 60px; /* Ajustar para não sobrepor o menu-toggle */
+  }
 }

@@ -1,15 +1,25 @@
+// scripts.js
+
 document.addEventListener("DOMContentLoaded", function () {
   const menuContainer = document.querySelector(".menu-container");
   const menu = document.querySelector(".menu#menu");
   const menuToggle = document.querySelector(".menu-toggle");
   const sidebar = document.querySelector(".sidebar");
+  const closeBtn = document.querySelector(".close-btn");
 
   menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("hidden");
-    sidebar.style.left = sidebar.classList.contains("hidden") ? "-280px" : "0";
-    menuToggle.style.left = sidebar.classList.contains("hidden")
-      ? "20px"
-      : "300px";
+    sidebar.classList.toggle("show");
+    menuToggle.classList.toggle("active");
+    if (sidebar.classList.contains("show")) {
+      sidebar.style.left = "0";
+    } else {
+      sidebar.style.left = window.innerWidth <= 768 ? "-100%" : "-280px";
+    }
+  });
+
+  closeBtn.addEventListener("click", () => {
+    sidebar.classList.remove("show");
+    sidebar.style.left = "-100%";
   });
 
   function createMenuItem(item) {
@@ -22,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleSubmenu(item.id + "-submenu", menuItem);
       } else if (item.data && item.data.TEC_ProgramaCodigo) {
         loadContent(item.data.TEC_ProgramaCodigo + ".html");
+        if (window.innerWidth <= 768) {
+          // Fecha o menu ao clicar em um item no celular
+          sidebar.classList.remove("show");
+          sidebar.style.left = "-100%";
+        }
       }
     });
 
@@ -100,7 +115,7 @@ function loadContent(url) {
     .catch((error) => console.error("Erro ao carregar o conteúdo:", error));
 }
 
-//Adicionar aos favoritos
+// Adicionar aos favoritos
 function toggleFavorite(item) {
   // Log para retorno
   console.log("Favorito toggled para:", item.text);
